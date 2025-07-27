@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dalgona Medium Design</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ff0000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background Pattern */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+      z-index: -1;
+    }
+
+    .canvas {
+      width: 320px;
+      height: 480px;
+      background: linear-gradient(145deg, #f4a261, #e76f51);
+      border-radius: 30px;
+      position: relative;
+      padding: 25px;
+      box-sizing: border-box;
+      box-shadow: 
+        0 20px 40px rgba(0,0,0,0.3),
+        inset 0 2px 4px rgba(255,255,255,0.2);
+      border: 4px solid #000;
+      overflow: hidden;
+    }
+
+    /* Abstract Geometric Shapes - 30 Total */
+    .shape {
+      position: absolute;
+      border: 2px solid #000;
+    }
+
+    /* Large shapes */
+    .shape-1 {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(45deg, #2a9d8f, #264653);
+      border-radius: 50%;
+      top: 30px;
+      left: 30px;
+    }
+
+    .shape-2 {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #e9c46a, #f4a261);
+      top: 30px;
+      left: 130px;
+    }
+
+    .shape-3 {
+      width: 0;
+      height: 0;
+      border-left: 30px solid transparent;
+      border-right: 30px solid transparent;
+      border-bottom: 60px solid #e76f51;
+      top: 30px;
+      left: 210px;
+    }
+
+    .shape-4 {
+      width: 70px;
+      height: 40px;
+      background: linear-gradient(45deg, #264653, #2a9d8f);
+      border-radius: 35px 35px 0 0;
+      transform: rotate(180deg);
+      top: 110px;
+      left: 30px;
+    }
+
+    .shape-5 {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, #e76f51, #d62828);
+      transform: rotate(45deg);
+      top: 110px;
+      left: 120px;
+    }
+
+    .shape-6 {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(45deg, #e9c46a, #f4a261);
+      border-radius: 50%;
+      top: 110px;
+      left: 190px;
+    }
+
+    .shape-7 {
+      width: 80px;
+      height: 8px;
+      background: linear-gradient(90deg, #264653, #2a9d8f);
+      border-radius: 4px;
+      top: 170px;
+      left: 30px;
+    }
+
+    .shape-8 {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #2a9d8f, #264653);
+      transform: rotate(45deg);
+      top: 170px;
+      left: 130px;
+    }
+
+    .shape-9 {
+      width: 0;
+      height: 0;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-bottom: 50px solid #e9c46a;
+      top: 170px;
+      left: 210px;
+    }
+
+    .shape-10 {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, #e76f51, #d62828);
+      border-radius: 50%;
+      top: 250px;
+      left: 30px;
+    }
+
+    .shape-11 {
+      width: 70px;
+      height: 8px;
+      background: linear-gradient(90deg, #264653, #2a9d8f);
+      border-radius: 4px;
+      top: 250px;
+      left: 100px;
+    }
+
+    .shape-12 {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(45deg, #e9c46a, #f4a261);
+      top: 250px;
+      left: 190px;
+    }
+
+    .shape-13 {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, #2a9d8f, #264653);
+      border-radius: 50%;
+      top: 330px;
+      left: 30px;
+    }
+
+    .shape-14 {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, #e76f51, #d62828);
+      transform: rotate(45deg);
+      top: 330px;
+      left: 110px;
+    }
+
+    .shape-15 {
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 40px solid #e9c46a;
+      top: 330px;
+      left: 180px;
+    }
+
+    .shape-16 {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(45deg, #264653, #2a9d8f);
+      border-radius: 50%;
+      top: 410px;
+      left: 30px;
+    }
+
+    .shape-17 {
+      width: 60px;
+      height: 8px;
+      background: linear-gradient(90deg, #e9c46a, #f4a261);
+      border-radius: 4px;
+      top: 410px;
+      left: 90px;
+    }
+
+    .shape-18 {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, #e76f51, #d62828);
+      transform: rotate(45deg);
+      top: 410px;
+      left: 170px;
+    }
+
+    /* Medium shapes */
+    .shape-19 {
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(45deg, #e9c46a, #f4a261);
+      border-radius: 50%;
+      top: 50px;
+      left: 280px;
+    }
+
+    .shape-20 {
+      width: 25px;
+      height: 25px;
+      background: linear-gradient(45deg, #264653, #2a9d8f);
+      top: 100px;
+      left: 280px;
+    }
+
+    .shape-21 {
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 30px solid #e76f51;
+      top: 150px;
+      left: 280px;
+    }
+
+    .shape-22 {
+      width: 35px;
+      height: 35px;
+      background: linear-gradient(45deg, #e9c46a, #f4a261);
+      transform: rotate(45deg);
+      top: 200px;
+      left: 280px;
+    }
+
+    .shape-23 {
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(45deg, #264653, #2a9d8f);
+      border-radius: 50%;
+      top: 250px;
+      left: 280px;
+    }
+
+    .shape-24 {
+      width: 25px;
+      height: 25px;
+      background: linear-gradient(45deg, #e76f51, #d62828);
+      top: 300px;
+      left: 280px;
+    }
+
+    .shape-25 {
+      width: 0;
+      height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-bottom: 25px solid #e9c46a;
+      top: 350px;
+      left: 280px;
+    }
+
+    .shape-26 {
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(45deg, #2a9d8f, #264653);
+      transform: rotate(45deg);
+      top: 400px;
+      left: 280px;
+    }
+
+    /* Small accent shapes */
+    .shape-27 {
+      width: 15px;
+      height: 15px;
+      background: #e9c46a;
+      border-radius: 50%;
+      top: 80px;
+      left: 270px;
+    }
+
+    .shape-28 {
+      width: 12px;
+      height: 12px;
+      background: #264653;
+      top: 180px;
+      left: 270px;
+    }
+
+    .shape-29 {
+      width: 10px;
+      height: 10px;
+      background: #e76f51;
+      border-radius: 50%;
+      top: 320px;
+      left: 270px;
+    }
+
+    .shape-30 {
+      width: 8px;
+      height: 8px;
+      background: #f4a261;
+      top: 380px;
+      left: 270px;
+    }
+
+    /* Abstract painting style connections */
+    .shape::before {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #000;
+      border-radius: 50%;
+    }
+
+    .shape-1::before { top: 40px; left: 40px; }
+    .shape-2::before { top: 15px; left: 15px; }
+    .shape-3::before { top: 45px; left: 30px; }
+    .shape-4::before { top: 20px; left: 35px; }
+    .shape-5::before { top: 12px; left: 12px; }
+    .shape-6::before { top: 20px; left: 20px; }
+    .shape-7::before { top: 4px; left: 40px; }
+    .shape-8::before { top: 15px; left: 15px; }
+    .shape-9::before { top: 40px; left: 25px; }
+    .shape-10::before { top: 25px; left: 25px; }
+    .shape-11::before { top: 4px; left: 35px; }
+    .shape-12::before { top: 10px; left: 10px; }
+    .shape-13::before { top: 30px; left: 30px; }
+    .shape-14::before { top: 12px; left: 12px; }
+    .shape-15::before { top: 30px; left: 20px; }
+    .shape-16::before { top: 20px; left: 20px; }
+    .shape-17::before { top: 4px; left: 30px; }
+    .shape-18::before { top: 12px; left: 12px; }
+    .shape-19::before { top: 15px; left: 15px; }
+    .shape-20::before { top: 8px; left: 8px; }
+    .shape-21::before { top: 20px; left: 15px; }
+    .shape-22::before { top: 10px; left: 10px; }
+    .shape-23::before { top: 15px; left: 15px; }
+    .shape-24::before { top: 8px; left: 8px; }
+    .shape-25::before { top: 18px; left: 12px; }
+    .shape-26::before { top: 10px; left: 10px; }
+    .shape-27::before { top: 7px; left: 7px; }
+    .shape-28::before { top: 6px; left: 6px; }
+    .shape-29::before { top: 5px; left: 5px; }
+    .shape-30::before { top: 4px; left: 4px; }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+    <div class="shape shape-5"></div>
+    <div class="shape shape-6"></div>
+    <div class="shape shape-7"></div>
+    <div class="shape shape-8"></div>
+    <div class="shape shape-9"></div>
+    <div class="shape shape-10"></div>
+    <div class="shape shape-11"></div>
+    <div class="shape shape-12"></div>
+    <div class="shape shape-13"></div>
+    <div class="shape shape-14"></div>
+    <div class="shape shape-15"></div>
+    <div class="shape shape-16"></div>
+    <div class="shape shape-17"></div>
+    <div class="shape shape-18"></div>
+    <div class="shape shape-19"></div>
+    <div class="shape shape-20"></div>
+    <div class="shape shape-21"></div>
+    <div class="shape shape-22"></div>
+    <div class="shape shape-23"></div>
+    <div class="shape shape-24"></div>
+    <div class="shape shape-25"></div>
+    <div class="shape shape-26"></div>
+    <div class="shape shape-27"></div>
+    <div class="shape shape-28"></div>
+    <div class="shape shape-29"></div>
+    <div class="shape shape-30"></div>
+  </div>
+</body>
+</html>

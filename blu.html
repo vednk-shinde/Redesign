@@ -1,0 +1,105 @@
+    /* Unique Geometric Shape using Sri Yantra triangles */
+    .geometric-shape {
+      width: 300px;
+      height: 200px;
+      position: relative;
+    }
+
+    /* Central Star Pattern */
+    .central-star {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .star-triangle {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 35px solid transparent;
+      border-right: 35px solid transparent;
+      border-bottom: 60px solid #0066cc;
+      top: 50%;
+      left: 50%;
+      transform-origin: 50% 0;
+    }
+
+    .star-triangle:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg); }
+    .star-triangle:nth-child(2) { transform: translate(-50%, -50%) rotate(45deg); }
+    .star-triangle:nth-child(3) { transform: translate(-50%, -50%) rotate(90deg); }
+    .star-triangle:nth-child(4) { transform: translate(-50%, -50%) rotate(135deg); }
+    .star-triangle:nth-child(5) { transform: translate(-50%, -50%) rotate(180deg); }
+    .star-triangle:nth-child(6) { transform: translate(-50%, -50%) rotate(225deg); }
+    .star-triangle:nth-child(7) { transform: translate(-50%, -50%) rotate(270deg); }
+    .star-triangle:nth-child(8) { transform: translate(-50%, -50%) rotate(315deg); }
+
+    /* Outer Ring Triangles */
+    .outer-triangle {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-bottom: 40px solid #00cc66;
+      top: 50%;
+      left: 50%;
+      transform-origin: 50% 0;
+    }
+
+    .outer-triangle:nth-child(9) { transform: translate(-50%, -50%) rotate(22.5deg) translateY(-110px); }
+    .outer-triangle:nth-child(10) { transform: translate(-50%, -50%) rotate(67.5deg) translateY(-110px); }
+    .outer-triangle:nth-child(11) { transform: translate(-50%, -50%) rotate(112.5deg) translateY(-110px); }
+    .outer-triangle:nth-child(12) { transform: translate(-50%, -50%) rotate(157.5deg) translateY(-110px); }
+    .outer-triangle:nth-child(13) { transform: translate(-50%, -50%) rotate(202.5deg) translateY(-110px); }
+    .outer-triangle:nth-child(14) { transform: translate(-50%, -50%) rotate(247.5deg) translateY(-110px); }
+    .outer-triangle:nth-child(15) { transform: translate(-50%, -50%) rotate(292.5deg) translateY(-110px); }
+    .outer-triangle:nth-child(16) { transform: translate(-50%, -50%) rotate(337.5deg) translateY(-110px); }
+
+    /* Corner Triangles */
+    .corner-triangle {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 35px solid #0066cc;
+    }
+
+    .corner-triangle:nth-child(17) { top: 20px; left: 20px; transform: rotate(45deg); }
+    .corner-triangle:nth-child(18) { top: 20px; right: 20px; transform: rotate(135deg); }
+    .corner-triangle:nth-child(19) { bottom: 20px; left: 20px; transform: rotate(-45deg); }
+    .corner-triangle:nth-child(20) { bottom: 20px; right: 20px; transform: rotate(-135deg); }
+
+    /* Inner Detail Triangles */
+    .inner-triangle {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 25px solid #00cc66;
+      top: 50%;
+      left: 50%;
+      transform-origin: 50% 0;
+    }
+
+    .inner-triangle:nth-child(21) { transform: translate(-50%, -50%) rotate(0deg) scale(0.6); }
+    .inner-triangle:nth-child(22) { transform: translate(-50%, -50%) rotate(90deg) scale(0.6); }
+    .inner-triangle:nth-child(23) { transform: translate(-50%, -50%) rotate(180deg) scale(0.6); }
+    .inner-triangle:nth-child(24) { transform: translate(-50%, -50%) rotate(270deg) scale(0.6); }
+
+    /* Center Dot */
+    .center-dot {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: #0066cc;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 15px #0066cc;
+    }
